@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.User">
+        <result column="competition_event_code" jdbcType="VARCHAR" property="competition_event_code"/>
+        <result column="competition_event_name" jdbcType="VARCHAR" property="competition_event_name"/>
+        <result column="suite_type" jdbcType="VARCHAR" property="suite_type"/>
+        <result column="plan_start_at" jdbcType="VARCHAR" property="plan_start_at"/>
+        <result column="plan_end_at" jdbcType="VARCHAR" property="plan_end_at"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="created_at" jdbcType="VARCHAR" property="created_at"/>
+        <result column="updated_at" jdbcType="VARCHAR" property="updated_at"/>
+        <result column="created_by" jdbcType="VARCHAR" property="created_by"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updated_by"/>
+    </resultMap>
+
+    <select id="Sel" resultType="com.example.demo.entity.User">
+        select * from competition_event where 1=1
+        <if test="user.competition_event_code != null">
+            AND competition_event_code = #{user.competition_event_code}
+        </if>
+    </select>
+
+    <insert id="Add" parameterType="com.example.demo.entity.User">
+        INSERT INTO competition_event
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user.competition_event_code != null">
+                competition_event_code,
+            </if>
+            <if test="user.competition_event_name != null">
+                competition_event_name,
+            </if>
+            <if test="user.suite_type != null">
+                suite_type,
+            </if>
+            <if test="user.plan_start_at != null">
+                plan_start_at,
+            </if>
+            <if test="user.plan_end_at != null">
+                plan_end_at,
+            </if>
+            <if test="user.status != null">
+                status,
+            </if>
+            <if test="user.created_at != null">
+                created_at,
+            </if>
+            <if test="user.updated_at != null">
+                updated_at,
+            </if>
+            <if test="user.created_by != null">
+                created_by,
+            </if>
+            <if test="user.updated_by != null">
+                updated_by,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="user.competition_event_code != null">
+                #{user.competition_event_code,jdbcType=VARCHAR},
+            </if>
+            <if test="user.competition_event_name != null">
+                #{user.competition_event_name,jdbcType=VARCHAR},
+            </if>
+            <if test="user.suite_type != null">
+                #{user.suite_type,jdbcType=VARCHAR},
+            </if>
+            <if test="user.plan_start_at != null">
+                #{user.plan_start_at,jdbcType=VARCHAR},
+            </if>
+            <if test="user.plan_end_at != null">
+                #{user.plan_end_at,jdbcType=VARCHAR},
+            </if>
+            <if test="user.status != null">
+                #{user.status,jdbcType=VARCHAR},
+            </if>
+            <if test="user.created_at != null">
+                #{user.created_at,jdbcType=VARCHAR},
+            </if>
+            <if test="user.updated_at != null">
+                #{user.updated_at,jdbcType=VARCHAR},
+            </if>
+            <if test="user.created_by != null">
+                #{user.created_by,jdbcType=VARCHAR},
+            </if>
+            <if test="user.updated_by != null">
+                #{user.updated_by,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="Update" parameterType="com.example.demo.entity.User">
+        UPDATE competition_event
+        <set>
+            <if test="user.competition_event_code != null">
+                competition_event_code = #{user.competition_event_code},
+            </if>
+            <if test="user.competition_event_name != null">
+                competition_event_name = #{user.competition_event_name},
+            </if>
+            <if test="user.suite_type != null">
+                suite_type = #{user.suite_type},
+            </if>
+            <if test="user.plan_start_at != null">
+                plan_start_at = #{user.plan_start_at},
+            </if>
+            <if test="user.plan_end_at != null">
+                plan_end_at = #{user.plan_end_at},
+            </if>
+            <if test="user.status != null">
+                status = #{user.status},
+            </if>
+            <if test="user.created_at != null">
+                created_at = #{user.created_at},
+            </if>
+            <if test="user.updated_at != null">
+                updated_at = #{user.updated_at},
+            </if>
+            <if test="user.created_by != null">
+                created_by = #{user.created_by},
+            </if>
+            <if test="user.updated_by != null">
+                updated_by = #{user.updated_by},
+            </if>
+        </set>
+        WHERE
+        competition_event_code=#{user.competition_event_code}
+    </update>
+
+    <delete id="Delete"  parameterType="com.example.demo.entity.User">
+        DELETE FROM competition_event WHERE competition_event_code = #{user.competition_event_code}
+    </delete>
+
+</mapper>
